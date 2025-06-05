@@ -38,3 +38,6 @@ steps:
 
 images:
   - 'asia-south1-docker.pkg.dev/velvety-dolphin-460703-e4/food-web-gcp/food-web-image:latest'
+
+options:
+  logging: CLOUD_LOGGING_ONLY

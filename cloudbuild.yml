@@ -1,0 +1,40 @@
+steps:
+  # Step 1: Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'asia-south1-docker.pkg.dev/velvety-dolphin-460703-e4/food-web-gcp/food-web-image:latest',
+        '.'
+      ]
+
+  # Step 2: Push the image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'push',
+        'asia-south1-docker.pkg.dev/velvety-dolphin-460703-e4/food-web-gcp/food-web-image:latest'
+      ]
+
+  # Step 3: Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      [
+        'run',
+        'deploy',
+        'food-web-service',
+        '--image',
+        'asia-south1-docker.pkg.dev/velvety-dolphin-460703-e4/food-web-gcp/food-web-image:latest',
+        '--region',
+        'asia-south1',
+        '--platform',
+        'managed',
+        '--allow-unauthenticated',
+        '--port',
+        '8080'
+      ]
+
+images:
+  - 'asia-south1-docker.pkg.dev/velvety-dolphin-460703-e4/food-web-gcp/food-web-image:latest'

@@ -5,7 +5,7 @@ steps:
       [
         'build',
         '-t',
-        'asia-south1-docker.pkg.dev/velvety-dolphin-460703-e4/food-repo/food-web-image:latest',
+        'asia-south1-docker.pkg.dev/mindful-phalanx-462010-e0/food-repo/food-web-image:latest',
         '.'
       ]
 
@@ -14,7 +14,7 @@ steps:
     args:
       [
         'push',
-        'asia-south1-docker.pkg.dev/velvety-dolphin-460703-e4/food-repo/food-web-image:latest'
+        'asia-south1-docker.pkg.dev/mindful-phalanx-462010-e0/food-repo/food-web-image:latest'
       ]
 
   # Step 3: Deploy to Cloud Run (region: asia-south1)
@@ -26,7 +26,7 @@ steps:
         'deploy',
         'food-web-service',
         '--image',
-        'asia-south1-docker.pkg.dev/velvety-dolphin-460703-e4/food-repo/food-web-image:latest',
+        'asia-south1-docker.pkg.dev/mindful-phalanx-462010-e0/food-repo/food-web-image:latest',
         '--region',
         'asia-south1',
         '--platform',
@@ -37,7 +37,7 @@ steps:
       ]
 
 images:
-  - 'asia-south1-docker.pkg.dev/velvety-dolphin-460703-e4/food-repo/food-web-image:latest'
+  - 'asia-south1-docker.pkg.dev/mindful-phalanx-462010-e0/food-repo/food-web-image:latest'
 
 options:
   logging: CLOUD_LOGGING_ONLY
